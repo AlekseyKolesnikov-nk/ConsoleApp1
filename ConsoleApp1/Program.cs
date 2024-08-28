@@ -1,33 +1,51 @@
 ﻿using System;
+
 class MainClass
 {
     public static void Main(string[] args)
-    {
+    { 
         var arr = new int[] { 5, 6, 9, 1, 2, 3, 4 };
-        int x, n, m;
-
+        int x;
+        x = 0;
         for (int i = 0; i < arr.Length; i++)
         {
-            for (int j = i + 1; j < arr.Length; j++)
-            {
-                if (arr[i] > arr[j])
-                {
-                    x = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = x;
-                    n = arr[i];
-                    m = arr[j];
-                    m = m;
-                }
-            }
-        }
-        foreach (var item in arr)
-        {
-            Console.Write(item);
-        }
+            x = x + arr[i];
 
+        }
+    Console.Write(x);
     }
 }
+
+
+//class MainClass
+//{
+//    public static void Main(string[] args)
+  //  {
+    //    var arr = new int[] { 5, 6, 9, 1, 2, 3, 4 };
+      //  int x, n, m;
+
+        //for (int i = 0; i < arr.Length; i++)
+//        {
+  //          for (int j = i + 1; j < arr.Length; j++)
+    //        {
+      //          if (arr[i] > arr[j])
+        //        {
+          //          x = arr[i];
+            //        arr[i] = arr[j];
+              //      arr[j] = x;
+                //    n = arr[i];
+                  //  m = arr[j];
+                    //m = m;
+//                }
+  //          }
+    //    }
+      //  foreach (var item in arr)
+        //{
+          //  Console.Write(item);
+//        }
+
+  //  }
+//}
 
 
 //        int[,] array = { { 1, 2, 3 }, { 4, 5, 6 }, { 10, 11, 12 }, {20, 21, 22 }, {31, 32, 33} };
