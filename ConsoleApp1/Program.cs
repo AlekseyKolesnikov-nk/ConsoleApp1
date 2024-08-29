@@ -4,27 +4,37 @@ class MainClass
     public static void Main(string[] args)
     {
         int[,] mmm = { { -5, 6, 9, 1, 2, -3 }, { -8, 8, 1, 1, 2, -3 } };
-//        int x = 0; int y = 0; int z = 0;
-        
-        // формируем построчный вывод массива с сортировкой
-  //      for(int i = 0; i <= mmm.GetUpperBound(0); i++)
-    //    {
-      //      for (int j = 0; j <= mmm.GetUpperBound(1); j++)
-        //        for (int k = j + 1; k <= mmm.GetUpperBound(1); k++)
-          //          if (mmm[i,j] > mmm[i,k])
-            //        {
-              //          x = mmm[i,k];
-                //        mmm[i,k] = mmm[i,j];
-                  //      mmm[i,j] = x;
-                    //    y = mmm[i,j]; z = mmm[i,k];
-                      //  Console.Write(mmm[i,j] + " ");
-//                    }
-  //      }
-         // Вставляем 1 пустую строку
-        Console.WriteLine("\n");
-       
+
         // формируем построчный вывод массива без сортировки
-        for(int v = 0; v < mmm.GetUpperBound(0) + 1; v++)
+        for (int v = 0; v < mmm.GetUpperBound(0) + 1; v++)
+        {
+            for (int w = 0; w < mmm.GetUpperBound(1) + 1; w++)
+                Console.Write(mmm[v, w] + " ");
+            Console.WriteLine();
+        }
+        
+        Console.WriteLine();
+        int x, y, z;
+
+        // формируем построчный вывод массива без сортировки
+        for (int i = 0; i <= mmm.GetUpperBound(0); i++)
+        {
+            for (int j = 0; j <= mmm.GetUpperBound(1); j++)
+            {
+                for (int k = j + 1; k <= mmm.GetUpperBound(1); k++)
+                    if (mmm[i, j] > mmm[i, k])
+                    {
+                        x = mmm[i, k];
+                        mmm[i, k] = mmm[i, j];
+                        mmm[i, j] = x;
+                        y = mmm[i, j];
+                        z = mmm[i, k];
+                    }
+            }
+        }
+
+        // формируем построчный вывод массива с сортировкой
+        for (int v = 0; v < mmm.GetUpperBound(0) + 1; v++)
         {
             for (int w = 0; w < mmm.GetUpperBound(1) + 1; w++)
                 Console.Write(mmm[v, w] + " ");
@@ -32,25 +42,6 @@ class MainClass
         }
     }
 }
-
-//for (int i = 0; i < arr.Length; i++)
-//        {
-//          for (int j = i + 1; j < arr.Length; j++)
-//        {
-//          if (arr[i] > arr[j])
-//        {
-//          x = arr[i];
-//        arr[i] = arr[j];
-//      arr[j] = x;
-//    n = arr[i];
-//  m = arr[j];
-//m = m;
-//                }
-//          }
-//    }
-
-
-
 
 //class MainClass
 //{
