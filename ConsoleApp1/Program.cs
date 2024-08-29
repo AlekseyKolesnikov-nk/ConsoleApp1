@@ -14,7 +14,7 @@ class MainClass
         }
         
         Console.WriteLine();
-        int x, y, z;
+        int x;
 
         // формируем построчный вывод массива без сортировки
         for (int i = 0; i <= mmm.GetUpperBound(0); i++)
@@ -27,9 +27,6 @@ class MainClass
                         x = mmm[i, k];
                         mmm[i, k] = mmm[i, j];
                         mmm[i, j] = x;
-                        y = mmm[i, j];
-                        z = mmm[i, k];
-                    }
             }
         }
 
