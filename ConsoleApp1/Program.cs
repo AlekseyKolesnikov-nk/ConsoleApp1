@@ -1,85 +1,198 @@
 ﻿using System;
-using System.ComponentModel.Design;
-class MainClass
+
+class Program //MainClass
 {
     public static void Main(string[] args)
     {
-        int n;
-        Console.WriteLine("Введите количество пользователей");
-        n = Convert.ToInt32(Console.ReadLine());
-        
-        for (int k = 0; k < n ; k++)
+        GetArrayFromConsole();
+    }
+    static int[] GetArrayFromConsole()
+    {
+        var result = new int[5];
+
+        for (int i = 0; i < result.Length; i++)
         {
-            (string Name1, string Name2, string Login, int LoginLenght, bool Pet, double Age, string [] favColors) User;
-
-            Console.WriteLine("Введите имя");
-            User.Name1 = Console.ReadLine();
-
-            Console.WriteLine("Введите Фамилию");
-            User.Name2 = Console.ReadLine();
-
-            Console.WriteLine("Введите логин");
-            User.Login = Console.ReadLine();
-            User.LoginLenght = User.Login.Length;
-
-            Console.WriteLine("Есть ли у вас животные? Да или Нет");
-            var res = Console.ReadLine();
-            if (res == "Да")
-            {
-                User.Pet = true;
-            }
-            else
-            {
-                User.Pet = false;
-            }
-
-            Console.WriteLine("Введите возраст пользователя");
-            User.Age = double.Parse(Console.ReadLine());
-
-            User.favColors = new string[3];
-            Console.WriteLine("Введите три любимых цвета пользователя");
-            for (int i = 0; i < User.favColors.Length; i++)
-            {
-                User.favColors[i] = Console.ReadLine();
-            }
-            Console.WriteLine();
+            Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+            result[i] = int.Parse(Console.ReadLine());
         }
+        int temp = 0;
+        for (int i = 0; i < result.Length; i++)
+            for (int j = i + 1; j < result.Length; j++)
+                if (result[i] > result[j])
+                {
+                    temp = result[i];
+                    result[i] = result[j];
+                    result[j] = temp;
+                }
+        for (int i = 0; i < result.Length; i++)
+        {
+            Console.WriteLine(result[i]);
+        }
+        return result;
     }
 }
 
 
+
+
+// Методы
+
+// ------------------------------------------------------------------------------------------
+    //static string ShowColor()
+    //{
+    //    Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
+    //    var color = Console.ReadLine();
+
+    //    switch (color)
+    //    {
+    //        case "red":
+    //            Console.BackgroundColor = ConsoleColor.Red;
+    //            Console.ForegroundColor = ConsoleColor.Black;
+
+    //            Console.WriteLine("Your color is red!");
+    //            break;
+
+    //        case "green":
+    //            Console.BackgroundColor = ConsoleColor.Green;
+    //            Console.ForegroundColor = ConsoleColor.Black;
+
+    //            Console.WriteLine("Your color is green!");
+    //            break;
+    //        case "cyan":
+    //            Console.BackgroundColor = ConsoleColor.Cyan;
+    //            Console.ForegroundColor = ConsoleColor.Black;
+
+    //            Console.WriteLine("Your color is cyan!");
+    //            break;
+    //        default:
+    //            Console.BackgroundColor = ConsoleColor.Yellow;
+    //            Console.ForegroundColor = ConsoleColor.Red;
+
+    //            Console.WriteLine("Your color is yellow!");
+    //            break;
+    //    }
+    //    return color;
+    //}
+
+    //public static void Main(string[] args)
+    //{
+    //    var (name, age) = ("Евгения", 27);
+
+    //    Console.WriteLine("Мое имя: {0}", name);
+    //    Console.WriteLine("Мой возраст: {0}", age);
+
+    //    Console.Write("Введите имя: ");
+    //    name = Console.ReadLine();
+    //    Console.Write("Введите возрас с цифрами:");
+    //    age = Convert.ToInt32(Console.ReadLine());
+
+    //    Console.WriteLine("Ваше имя: {0}", name);
+    //    Console.WriteLine("Ваш возраст: {0}", age);
+
+    //    var favcolors = new string[3];
+    //    for (int i = 0; i < favcolors.Length; i++)
+    //    { 
+    //        favcolors[i] = (ShowColor());
+    //    }
+    //    Console.WriteLine("Ваши любимые цвета:");
+    //    foreach (var color in favcolors)
+    //    { 
+    //        Console.WriteLine(color);
+    //    }
+
+
+
 //Работа с кортежем
+// ___________________________________________________________________
 
-        //(string Name, string Type, double Age, int NameCount) Pet;
+//(string Name, string[] favBludo) User;
 
-        //Console.WriteLine("Имя питомца:");
-        //Pet.Name = Console.ReadLine();
-        //Console.WriteLine(Pet.Name);
-        //Pet.NameCount = Pet.Name.Length;
-        //Console.WriteLine(Pet.NameCount);
+//Console.WriteLine("Введите имя");
+//User.Name = Console.ReadLine();
 
-        //Console.WriteLine("Порода питомца:");
-        //Pet.Type = Console.ReadLine();
-        //Console.WriteLine(Pet.Type);
+//User.favBludo = new string[5];
+//Console.WriteLine("Введите 5 Ваших любимых блюд");
+//for (int i = 0; i < User.favBludo.Length; i++)
+//    {
+//        User.favBludo[i] = Console.ReadLine();
+//    }
+//Console.WriteLine();
 
-        //Console.WriteLine("Возраст питомца:");
-        //Pet.Age = Convert.ToInt32(Console.ReadLine());
-        //Console.WriteLine(Pet.Age);
+// -----------------------------------------------------------------
+
+//int n;
+//Console.WriteLine("Введите количество пользователей");
+//n = Convert.ToInt32(Console.ReadLine());
+
+//for (int k = 0; k < n ; k++)
+//{
+//    ;
+
+//    Console.WriteLine("Введите имя");
+//    User.Name1 = Console.ReadLine();
+
+//    Console.WriteLine("Введите Фамилию");
+//    User.Name2 = Console.ReadLine();
+
+//    Console.WriteLine("Введите логин");
+//    User.Login = Console.ReadLine();
+//    User.LoginLenght = User.Login.Length;
+
+//    Console.WriteLine("Есть ли у вас животные? Да или Нет");
+//    var res = Console.ReadLine();
+//    if (res == "Да")
+//    {
+//        User.Pet = true;
+//    }
+//    else
+//    {
+//        User.Pet = false;
+//    }
+
+//    Console.WriteLine("Введите возраст пользователя");
+//    User.Age = double.Parse(Console.ReadLine());
+
+//    User.favColors = new string[3];
+//    Console.WriteLine("Введите три любимых цвета пользователя");
+//    for (int i = 0; i < User.favColors.Length; i++)
+//    {
+//        User.favColors[i] = Console.ReadLine();
+//    }
+//    Console.WriteLine();
+//}
+
+// --------------------------------------------------------------------
+
+//(string Name, string Type, double Age, int NameCount) Pet;
+
+//Console.WriteLine("Имя питомца:");
+//Pet.Name = Console.ReadLine();
+//Console.WriteLine(Pet.Name);
+//Pet.NameCount = Pet.Name.Length;
+//Console.WriteLine(Pet.NameCount);
+
+//Console.WriteLine("Порода питомца:");
+//Pet.Type = Console.ReadLine();
+//Console.WriteLine(Pet.Type);
+
+//Console.WriteLine("Возраст питомца:");
+//Pet.Age = Convert.ToInt32(Console.ReadLine());
+//Console.WriteLine(Pet.Age);
 
 // ---------------------------------------------------------------------------
-        //var (name, age) = ("Алексей", 59);
-        //Console.WriteLine("Мое имя: {0}", name);
-        //Console.WriteLine("Мой возраст: {0}" ,age);
-        
-        //Console.WriteLine("Введите Ваше имя: ");
-        //name = Console.ReadLine();
+//var (name, age) = ("Алексей", 59);
+//Console.WriteLine("Мое имя: {0}", name);
+//Console.WriteLine("Мой возраст: {0}" ,age);
 
-        //Console.WriteLine("Введите Ваш возраст цифрами: ");
-        //age = Convert.ToInt32(Console.ReadLine());
-        //Console.WriteLine();
+//Console.WriteLine("Введите Ваше имя: ");
+//name = Console.ReadLine();
 
-        //Console.WriteLine("Ваше имя: {0}", name);
-        //Console.WriteLine("Ваш возраст: {0}" ,age);
+//Console.WriteLine("Введите Ваш возраст цифрами: ");
+//age = Convert.ToInt32(Console.ReadLine());
+//Console.WriteLine();
+
+//Console.WriteLine("Ваше имя: {0}", name);
+//Console.WriteLine("Ваш возраст: {0}" ,age);
 
 //------------------------------------------------------------------------------------
 
