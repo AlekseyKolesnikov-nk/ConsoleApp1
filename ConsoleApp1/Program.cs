@@ -1,6 +1,6 @@
 ﻿using System;
 
-class Program //MainClass
+class MainClass
 {
     public static void Main(string[] args)
     {
