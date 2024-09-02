@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Drawing;
 
 class MainClass
 {
 
-    static string ShowColor(string username)
+    static string ShowColor(string username, int userage)
     {
-        Console.WriteLine("{0} Напишите свой любимый цвет на английском с маленькой буквы", username);
         var color = Console.ReadLine();
 
         switch (color)
@@ -53,25 +51,20 @@ class MainClass
         Console.Write("Введите возраст с цифрами:");
         age = Convert.ToInt32(Console.ReadLine());
 
-        Console.WriteLine("Ваше имя: {0}", name);
-        Console.WriteLine("Ваш возраст: {0}", age);
-
         var favcolors = new string[3];
-
 
         for (int i = 0; i < favcolors.Length; i++)
         {
+            Console.WriteLine("{0}, {1} лет", name, age);
             Console.WriteLine("Введите любимый цвет :");
-            favcolors[i] = ShowColor(name);
+            favcolors[i] = ShowColor(name, age);
         }
-
+        Console.WriteLine("{0}, {1}", name, age);
         Console.WriteLine("Ваши любимые цвета:");
         foreach (var color in favcolors)
         {
             Console.WriteLine(color);
         }
-
-        //ShowColor();
 
         Console.ReadKey();
     }
