@@ -1,33 +1,138 @@
 ﻿using System;
 
+class MainClass
+{
 
-class MainClass {
-  public static void Main (string[] args) {
-		
-		var arr = new int[] { 1, 2,3 };
-		BigDataOperation(arr);
+    public static void Main(string[] args)
+    {
+        int num = 0;    
+        GetArrayFromConsole(ref num);
+    }
 
-		Console.WriteLine(arr[0]);
+    static int[] GetArrayFromConsole(ref int num)
+    {
+        ChangeNum(ref num);
+        var result = new int[num];
 
-  }
+        for (int i = 0; i < result.Length; i++)
+        {
+            Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+            result[i] = int.Parse(Console.ReadLine());
+        }
+        Console.WriteLine();
+        SortArray(result);
 
-	static void BigDataOperation(int[] arr)
-	{
-		arr[0] = 4;
-	}
+        return result;
+    }
 
+    static int ChangeNum(ref int newnum)
+    {
+        Console.WriteLine("Введите количество элементов масива");
+        newnum = Convert.ToInt32(Console.ReadLine());
+            
+        return newnum;
+    }
+
+    static int[] SortArray(int[] result)
+    {
+        int temp = 0;
+        for (int i = 0; i < result.Length; i++)
+            for (int j = i + 1; j < result.Length; j++)
+                if (result[i] > result[j])
+                {
+                    temp = result[i];
+                    result[i] = result[j];
+                    result[j] = temp;
+                }
+        for (int i = 0; i < result.Length; i++)
+        {
+            Console.WriteLine(result[i]);
+        }
+        return result;
+    }
 }
 
 
-
-
-
-
-
-
-
-
 // Методы
+
+// 5.3.8 Передача в метод размерость массива по ссылке ---------------------------------------------
+
+//class MainClass
+//{
+
+//    public static void Main(string[] args)
+
+//    {
+//        int num = 0;
+//        GetArrayFromConsole(ref num);
+//    }
+
+//    static int[] GetArrayFromConsole(ref int num)
+//    {
+//        ChangeNum(ref num);
+//        var result = new int[num];
+
+//        for (int i = 0; i < result.Length; i++)
+//        {
+//            Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+//            result[i] = int.Parse(Console.ReadLine());
+//        }
+//        Console.WriteLine();
+//        SortArray(result);
+
+//        return result;
+//    }
+
+//    static int ChangeNum(ref int newnum)
+//    {
+//        Console.WriteLine("Введите количество элементов масива");
+//        newnum = Convert.ToInt32(Console.ReadLine());
+
+//        return newnum;
+//    }
+
+//    static int[] SortArray(int[] result)
+//    {
+//        int temp = 0;
+//        for (int i = 0; i < result.Length; i++)
+//            for (int j = i + 1; j < result.Length; j++)
+//                if (result[i] > result[j])
+//                {
+//                    temp = result[i];
+//                    result[i] = result[j];
+//                    result[j] = temp;
+//                }
+//        for (int i = 0; i < result.Length; i++)
+//        {
+//            Console.WriteLine(result[i]);
+//        }
+//        return result;
+//    }
+//}
+
+// -------------------------------------------------------------------------------------------------
+//5.3.6 Использование ref и in
+
+//class Program
+//{
+//	public static void Main(string[] args)
+//	{
+//		var arr = new int[] { 1, 2, 3 };
+//		var data = 5; 
+
+//		BigDataOperation(arr, ref data);
+
+//		Console.WriteLine(arr[0]);
+
+//		  Console.ReadKey();
+//}
+
+//	static void BigDataOperation(int[] arr, ref int data)
+//	{
+//		data = 7;
+//		arr[0] = 14;
+//	}
+//}
 
 // 5.3.2. Передача перемнной по ссылке -----------------------------------------------------------------
 //namespace FirstApp
@@ -36,7 +141,8 @@ class MainClass {
 //    {
 //        static void Main(string[] args)
 //        {
-//            var myAge = 59;
+//            var myAge = 30;
+
 //            Console.WriteLine(myAge);
 
 //            ChangeAge(ref myAge);
@@ -58,26 +164,26 @@ class MainClass {
 // *******************------------------------------------------*****************************
 // 5.2.17, 18 Вернуться к коду - не получилось!!!
 
-    //class Program
-    //{
-    //    static void Main(string[] args)
-    //    {
-    //        var someName = "Евгения";
-    //        Console.WriteLine(someName);
+//class Program
+//{
+//    static void Main(string[] args)
+//    {
+//        var someName = "Евгения";
+//        Console.WriteLine(someName);
 
-    //        GetName(someName);
+//        GetName(someName);
 
-    //        Console.WriteLine(someName);
+//        Console.WriteLine(someName);
 
-    //        Console.ReadKey();
-    //    }
+//        Console.ReadKey();
+//    }
 
-    //    static void GetName(string name)
-    //    {
-    //        Console.WriteLine("Введите имя");
-    //        name = Console.ReadLine();
-    //    }
-    //}
+//    static void GetName(string name)
+//    {
+//        Console.WriteLine("Введите имя");
+//        name = Console.ReadLine();
+//    }
+//}
 
 
 // 5.2.8.
