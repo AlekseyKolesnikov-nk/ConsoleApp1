@@ -1,120 +1,193 @@
 ﻿using System;
 
-class MainClass
-{
-    public static void Main(string[] args)
-    {
-        GetArrayFromConsole();
-    }
 
-        static int[] GetArrayFromConsole()
-        {
-            var result = new int[5];
+class MainClass {
+  public static void Main (string[] args) {
+		
+		var arr = new int[] { 1, 2,3 };
+		BigDataOperation(arr);
 
-            for (int i = 0; i < result.Length; i++)
-            {
-                Console.WriteLine("Введите элемент массива номер {0}", i + 1);
-                result[i] = int.Parse(Console.ReadLine());
-            }
-        Console.WriteLine();
-        SortArray(result);
-           
-        return result;
+		Console.WriteLine(arr[0]);
 
-    }
+  }
 
-    static int[] SortArray(int[] result)
-        {
-            //var result = new int[5];
-            int temp = 0;
-            for (int i = 0; i < result.Length; i++)
-                for (int j = i + 1; j < result.Length; j++)
-                    if (result[i] > result[j])
-                    {
-                        temp = result[i];
-                        result[i] = result[j];
-                        result[j] = temp;
-                    }
-            for (int i = 0; i < result.Length; i++)
-            {
-                Console.WriteLine(result[i]);
-            }
-            return result;
-        }
+	static void BigDataOperation(int[] arr)
+	{
+		arr[0] = 4;
+	}
+
 }
+
+
+
+
+
+
+
 
 
 
 // Методы
 
+// 5.3.2. Передача перемнной по ссылке -----------------------------------------------------------------
+//namespace FirstApp
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            var myAge = 59;
+//            Console.WriteLine(myAge);
 
+//            ChangeAge(ref myAge);
+
+//            Console.WriteLine(myAge);
+
+//            Console.ReadKey();
+//        }
+
+//        static void ChangeAge(ref int age)
+//        {
+//            Console.WriteLine("Введите возраст");
+//            age = Convert.ToInt32(Console.ReadLine());
+//        }
+//    }
+//}
+
+// -------------------******************************************-----------------------------
+// *******************------------------------------------------*****************************
+// 5.2.17, 18 Вернуться к коду - не получилось!!!
+
+    //class Program
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        var someName = "Евгения";
+    //        Console.WriteLine(someName);
+
+    //        GetName(someName);
+
+    //        Console.WriteLine(someName);
+
+    //        Console.ReadKey();
+    //    }
+
+    //    static void GetName(string name)
+    //    {
+    //        Console.WriteLine("Введите имя");
+    //        name = Console.ReadLine();
+    //    }
+    //}
+
+
+// 5.2.8.
+
+//public static void Main(string[] args)
+//{
+//    GetArrayFromConsole();
+//}
+
+//    static int[] GetArrayFromConsole()
+//    {
+//        var result = new int[5];
+
+//        for (int i = 0; i < result.Length; i++)
+//        {
+//            Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+//            result[i] = int.Parse(Console.ReadLine());
+//        }
+//    Console.WriteLine();
+//    SortArray(result);
+
+//    return result;
+
+//}
+
+//static int[] SortArray(int[] result)
+//    {
+//        //var result = new int[5];
+//        int temp = 0;
+//        for (int i = 0; i < result.Length; i++)
+//            for (int j = i + 1; j < result.Length; j++)
+//                if (result[i] > result[j])
+//                {
+//                    temp = result[i];
+//                    result[i] = result[j];
+//                    result[j] = temp;
+//                }
+//        for (int i = 0; i < result.Length; i++)
+//        {
+//            Console.WriteLine(result[i]);
+//        }
+//        return result;
+//    }
 
 // -----------------------------------------------------------------------------------
 //5.2.7 Массив с двумя параметрами ---------------------------------------------------
-    //static string ShowColor(string username, int userage)
-    //{
-    //    var color = Console.ReadLine();
+//static string ShowColor(string username, int userage)
+//{
+//    var color = Console.ReadLine();
 
-    //    switch (color)
-    //    {
-    //        case "red":
-    //            Console.BackgroundColor = ConsoleColor.Red;
-    //            Console.ForegroundColor = ConsoleColor.Black;
+//    switch (color)
+//    {
+//        case "red":
+//            Console.BackgroundColor = ConsoleColor.Red;
+//            Console.ForegroundColor = ConsoleColor.Black;
 
-    //            Console.WriteLine("Your color is red!");
-    //            break;
+//            Console.WriteLine("Your color is red!");
+//            break;
 
-    //        case "green":
-    //            Console.BackgroundColor = ConsoleColor.Green;
-    //            Console.ForegroundColor = ConsoleColor.Black;
+//        case "green":
+//            Console.BackgroundColor = ConsoleColor.Green;
+//            Console.ForegroundColor = ConsoleColor.Black;
 
-    //            Console.WriteLine("Your color is green!");
-    //            break;
-    //        case "cyan":
-    //            Console.BackgroundColor = ConsoleColor.Cyan;
-    //            Console.ForegroundColor = ConsoleColor.Black;
+//            Console.WriteLine("Your color is green!");
+//            break;
+//        case "cyan":
+//            Console.BackgroundColor = ConsoleColor.Cyan;
+//            Console.ForegroundColor = ConsoleColor.Black;
 
-    //            Console.WriteLine("Your color is cyan!");
-    //            break;
-    //        default:
-    //            Console.BackgroundColor = ConsoleColor.Yellow;
-    //            Console.ForegroundColor = ConsoleColor.Red;
+//            Console.WriteLine("Your color is cyan!");
+//            break;
+//        default:
+//            Console.BackgroundColor = ConsoleColor.Yellow;
+//            Console.ForegroundColor = ConsoleColor.Red;
 
-    //            Console.WriteLine("Your color is yellow!");
-    //            break;
-    //    }
-    //            return color;
-    //}
+//            Console.WriteLine("Your color is yellow!");
+//            break;
+//    }
+//            return color;
+//}
 
-    //{
+//{
 
-    //    var (name, age) = ("Евгения", 27);
+//    var (name, age) = ("Евгения", 27);
 
-    //    Console.WriteLine("Мое имя: {0}", name);
-    //    Console.WriteLine("Мой возраст: {0}", age);
+//    Console.WriteLine("Мое имя: {0}", name);
+//    Console.WriteLine("Мой возраст: {0}", age);
 
-    //    Console.Write("Введите имя: ");
-    //    name = Console.ReadLine();
-    //    Console.Write("Введите возраст с цифрами:");
-    //    age = Convert.ToInt32(Console.ReadLine());
+//    Console.Write("Введите имя: ");
+//    name = Console.ReadLine();
+//    Console.Write("Введите возраст с цифрами:");
+//    age = Convert.ToInt32(Console.ReadLine());
 
-    //    var favcolors = new string[3];
+//    var favcolors = new string[3];
 
-    //    for (int i = 0; i < favcolors.Length; i++)
-    //    {
-    //        Console.WriteLine("{0}, {1} лет", name, age);
-    //        Console.WriteLine("Введите любимый цвет :");
-    //        favcolors[i] = ShowColor(name, age);
-    //    }
-    //    Console.WriteLine("{0}, {1}", name, age);
-    //    Console.WriteLine("Ваши любимые цвета:");
-    //    foreach (var color in favcolors)
-    //    {
-    //        Console.WriteLine(color);
-    //    }
+//    for (int i = 0; i < favcolors.Length; i++)
+//    {
+//        Console.WriteLine("{0}, {1} лет", name, age);
+//        Console.WriteLine("Введите любимый цвет :");
+//        favcolors[i] = ShowColor(name, age);
+//    }
+//    Console.WriteLine("{0}, {1}", name, age);
+//    Console.WriteLine("Ваши любимые цвета:");
+//    foreach (var color in favcolors)
+//    {
+//        Console.WriteLine(color);
+//    }
 
-    //    Console.ReadKey();
-    //}
+//    Console.ReadKey();
+//}
 
 // -----------------------------------------------------------------------------------
 // 5.1.6 Ввод массива с клавиатуры + сортировка по возрастанию, выод на экран --------
