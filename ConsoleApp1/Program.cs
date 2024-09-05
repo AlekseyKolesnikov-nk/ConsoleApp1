@@ -4,30 +4,68 @@ class MainClass
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Укажите глубину факториала");
-        var x = int.Parse(Console.ReadLine());
 
-        Factorial(x);
-        decimal result = x * Factorial(x - 1);
-        Console.WriteLine(result);
+        Console.WriteLine("Укажите число");
+        var N = int.Parse(Console.ReadLine());
+        Console.WriteLine("Укажите степень");
+        byte pow = byte.Parse(Console.ReadLine());
+
+        //Результат 2 в 3 степени
+        Console.WriteLine(PowerUp(N, pow));
     }
 
-    static decimal Factorial(int x)
+    public static int PowerUp(int N, byte pow)
     {
-        if (x == 1)
+        if (pow == 0)
         {
             return 1;
         }
         else
         {
-            return x * Factorial(x - 1);
+            if (pow == 1)
+            {
+                return N;
+            }
+            else
+            {
+                return N * PowerUp(N, --pow);
+            }
         }
     }
 }
 
 // Рекурсия ****************************************************************************
+// 5.5.8 Рекурсия возведение числа в степень
 
-// 5.5.4 Затухающее Эхо с раскраской строк
+
+
+// 5.5.5-5.5.7 Рекурсия с факториалом --------------------------------------------------
+//class MainClass
+//{
+//    public static void Main(string[] args)
+//    {
+//        Console.WriteLine("Укажите глубину факториала");
+//        var x = int.Parse(Console.ReadLine());
+
+//        Factorial(x);
+//        decimal result = x * Factorial(x - 1);
+//        Console.WriteLine(result);
+//    }
+
+//    static decimal Factorial(int x)
+//    {
+//        if (x == 1)
+//        {
+//            return 1;
+//        }
+//        else
+//        {
+//            return x * Factorial(x - 1);
+//        }
+//    }
+//}
+
+// 5.5.4 Затухающее Эхо с раскраской строк ----------------------------
 //class MainClass
 //{
 //    public static void Main(string[] args)
