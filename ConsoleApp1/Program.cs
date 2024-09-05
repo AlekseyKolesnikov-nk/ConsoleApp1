@@ -4,13 +4,14 @@ class MainClass
 {
 
     public static void Main(string[] args)
+
     {
-        int num = 0;    
-        GetArrayFromConsole(ref num);
+        GetArrayFromConsole();
     }
 
-    static int[] GetArrayFromConsole(ref int num)
+    static int[] GetArrayFromConsole()
     {
+        int num = 0;
         ChangeNum(ref num);
         var result = new int[num];
 
@@ -29,7 +30,7 @@ class MainClass
     {
         Console.WriteLine("Введите количество элементов масива");
         newnum = Convert.ToInt32(Console.ReadLine());
-            
+
         return newnum;
     }
 
@@ -51,17 +52,10 @@ class MainClass
         return result;
     }
 }
-
-
-// Методы
-
-// 5.3.8 Передача в метод размерость массива по ссылке ---------------------------------------------
-
 //class MainClass
 //{
-
+//int array = 0;
 //    public static void Main(string[] args)
-
 //    {
 //        int num = 0;
 //        GetArrayFromConsole(ref num);
@@ -78,7 +72,10 @@ class MainClass
 //            result[i] = int.Parse(Console.ReadLine());
 //        }
 //        Console.WriteLine();
-//        SortArray(result);
+//        int array = 0;
+//        int sorteddecs = 0;
+//        int sortedacs = 0;
+//        SortArray(in array, out sorteddecs, out sortedacs);
 
 //        return result;
 //    }
@@ -91,7 +88,13 @@ class MainClass
 //        return newnum;
 //    }
 
-//    static int[] SortArray(int[] result)
+//    static void SortArray(in int[] array, out int[] sorteddecs, out int[] sortedacs)
+//    {
+//        sorteddecs = SortArrayDecs(array);
+//        sortedacs = SortArrayAsc(array);
+//    }
+
+//    static int[] SortArrayAsc(int[] result)
 //    {
 //        int temp = 0;
 //        for (int i = 0; i < result.Length; i++)
@@ -108,7 +111,33 @@ class MainClass
 //        }
 //        return result;
 //    }
+
+//    static int[] SortArrayDecs(int[] result)
+//    {
+//        int temp = 0;
+//        for (int i = 0; i < result.Length; i++)
+//            for (int j = i + 1; j < result.Length; j++)
+//                if (result[i] < result[j])
+//                {
+//                    temp = result[i];
+//                    result[i] = result[j];
+//                    result[j] = temp;
+//                }
+//        for (int i = 0; i < result.Length; i++)
+//        {
+//            Console.WriteLine(result[i]);
+//        }
+//        return result;
+//    }
 //}
+
+
+
+// Методы
+
+// 5.3.8 Передача в метод размерость массива по ссылке ---------------------------------------------
+
+
 
 // -------------------------------------------------------------------------------------------------
 //5.3.6 Использование ref и in
@@ -160,33 +189,8 @@ class MainClass
 //    }
 //}
 
-// -------------------******************************************-----------------------------
-// *******************------------------------------------------*****************************
-// 5.2.17, 18 Вернуться к коду - не получилось!!!
 
-//class Program
-//{
-//    static void Main(string[] args)
-//    {
-//        var someName = "Евгения";
-//        Console.WriteLine(someName);
-
-//        GetName(someName);
-
-//        Console.WriteLine(someName);
-
-//        Console.ReadKey();
-//    }
-
-//    static void GetName(string name)
-//    {
-//        Console.WriteLine("Введите имя");
-//        name = Console.ReadLine();
-//    }
-//}
-
-
-// 5.2.8.
+// 5.2.8. ------------------------------------------------------------------------
 
 //public static void Main(string[] args)
 //{
