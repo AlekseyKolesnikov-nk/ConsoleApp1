@@ -23,6 +23,8 @@ class MainClass
             modif = modif.Remove(0, 2);
         }
 
+        Console.BackgroundColor = (ConsoleColor)deep;
+        Console.ForegroundColor = (ConsoleColor)deep1;
         Console.WriteLine("..." + saidword);
 
         if (deep > 1)
@@ -34,11 +36,47 @@ class MainClass
 
 
 
+// Рекурсия ****************************************************************************
+
+// 5.5.4 Затухающее Эхо с раскраской строк
+//class MainClass
+//{
+//    public static void Main(string[] args)
+//    {
+//        Console.WriteLine("Напишите что-то");
+//        var str = Console.ReadLine();
+
+//        Console.WriteLine("Укажите глубину эха");
+//        var deep = int.Parse(Console.ReadLine());
+
+//        Echo(str, deep);
+
+//        Console.ReadKey();
+//    }
+
+//    static void Echo(string saidword, int deep)
+//    {
+//        var modif = saidword;
+//        if (modif.Length > 2)
+//        {
+//            modif = modif.Remove(0, 2);
+//        }
+
+//        Console.BackgroundColor = (ConsoleColor)deep;
+//        Console.ForegroundColor = (ConsoleColor)deep1;
+//        Console.WriteLine("..." + saidword);
+
+//        if (deep > 1)
+//        {
+//            Echo(modif, deep - 1);
+//        }
+//    }
+//}
 
 
-// Методы
+// Методы ********************************************************************************************
 
-// 5.3.13 Передача в метод размерость массива по ссылке, сортировка, обратная сортировка
+// 5.3.13 Передача в метод размерость массива по ссылке, сортировка, обратная сортировка --------------
 //class MainClass
 //{
 //    int array = 0;
@@ -306,9 +344,8 @@ class MainClass
 //    }
 //            return color;
 //}
-
+// -------------------------------------------------------------
 //{
-
 //    var (name, age) = ("Евгения", 27);
 
 //    Console.WriteLine("Мое имя: {0}", name);
