@@ -2,26 +2,30 @@
 
 class MainClass
 {
-
+    int array = 0;
     public static void Main(string[] args)
-
-    {
-        GetArrayFromConsole();
-    }
-
-    static int[] GetArrayFromConsole()
     {
         int num = 0;
+        GetArrayFromConsole(ref num);
+    }
+
+    static int[] GetArrayFromConsole(ref int num)
+    {
         ChangeNum(ref num);
         var result = new int[num];
+        int[] array = new int[num];
 
         for (int i = 0; i < result.Length; i++)
         {
             Console.WriteLine("Введите элемент массива номер {0}", i + 1);
             result[i] = int.Parse(Console.ReadLine());
+            array[i] = result[i];
         }
         Console.WriteLine();
-        SortArray(result);
+
+        int[] sorteddecs;
+        int[] sortedacs;
+        SortArray(in array, out sorteddecs, out sortedacs);
 
         return result;
     }
@@ -34,7 +38,14 @@ class MainClass
         return newnum;
     }
 
-    static int[] SortArray(int[] result)
+    static void SortArray(in int[] array, out int[] sorteddecs, out int[] sortedacs)
+    {
+        sortedacs = SortArrayAsc(array);
+        Console.WriteLine();
+        sorteddecs = SortArrayDecs(array);
+    }
+
+    static int[] SortArrayAsc(int[] result)
     {
         int temp = 0;
         for (int i = 0; i < result.Length; i++)
@@ -51,10 +62,35 @@ class MainClass
         }
         return result;
     }
+
+    static int[] SortArrayDecs(int[] result)
+    {
+        int temp = 0;
+        for (int i = 0; i < result.Length; i++)
+            for (int j = i + 1; j < result.Length; j++)
+                if (result[i] < result[j])
+                {
+                    temp = result[i];
+                    result[i] = result[j];
+                    result[j] = temp;
+                }
+        for (int i = 0; i < result.Length; i++)
+        {
+            Console.WriteLine(result[i]);
+        }
+        return result;
+    }
 }
+
+
+
+
+// Методы
+
+// 5.3.13 Передача в метод размерость массива по ссылке, сортировка, обратная сортировка
 //class MainClass
 //{
-//int array = 0;
+//    int array = 0;
 //    public static void Main(string[] args)
 //    {
 //        int num = 0;
@@ -63,22 +99,24 @@ class MainClass
 
 //    static int[] GetArrayFromConsole(ref int num)
 //    {
-//        ChangeNum(ref num);
+//        ChangeNum(ref num); 
 //        var result = new int[num];
+//        int[] array = new int[num];
 
 //        for (int i = 0; i < result.Length; i++)
 //        {
 //            Console.WriteLine("Введите элемент массива номер {0}", i + 1);
 //            result[i] = int.Parse(Console.ReadLine());
+//            array[i] = result[i];
 //        }
 //        Console.WriteLine();
-//        int array = 0;
-//        int sorteddecs = 0;
-//        int sortedacs = 0;
+
+//        int[] sorteddecs;
+//        int[] sortedacs;
 //        SortArray(in array, out sorteddecs, out sortedacs);
 
 //        return result;
-//    }
+//     }
 
 //    static int ChangeNum(ref int newnum)
 //    {
@@ -90,8 +128,9 @@ class MainClass
 
 //    static void SortArray(in int[] array, out int[] sorteddecs, out int[] sortedacs)
 //    {
-//        sorteddecs = SortArrayDecs(array);
 //        sortedacs = SortArrayAsc(array);
+//        Console.WriteLine();
+//        sorteddecs = SortArrayDecs(array);
 //    }
 
 //    static int[] SortArrayAsc(int[] result)
@@ -110,7 +149,7 @@ class MainClass
 //            Console.WriteLine(result[i]);
 //        }
 //        return result;
-//    }
+//     }
 
 //    static int[] SortArrayDecs(int[] result)
 //    {
@@ -130,13 +169,61 @@ class MainClass
 //        return result;
 //    }
 //}
-
-
-
-// Методы
+// -------------------------------------------------------------------------------------------------
 
 // 5.3.8 Передача в метод размерость массива по ссылке ---------------------------------------------
+//class MainClass
+//{
 
+//    public static void Main(string[] args)
+
+//    {
+//        GetArrayFromConsole();
+//    }
+
+//    static int[] GetArrayFromConsole()
+//    {
+//        int num = 0;
+//        ChangeNum(ref num);
+//        var result = new int[num];
+
+//        for (int i = 0; i < result.Length; i++)
+//        {
+//            Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+//            result[i] = int.Parse(Console.ReadLine());
+//        }
+//        Console.WriteLine();
+//        SortArray(result);
+
+//        return result;
+//    }
+
+//    static int ChangeNum(ref int newnum)
+//    {
+//        Console.WriteLine("Введите количество элементов масива");
+//        newnum = Convert.ToInt32(Console.ReadLine());
+
+//        return newnum;
+//    }
+
+//    static int[] SortArray(int[] result)
+//    {
+//        int temp = 0;
+//        for (int i = 0; i < result.Length; i++)
+//            for (int j = i + 1; j < result.Length; j++)
+//                if (result[i] > result[j])
+//                {
+//                    temp = result[i];
+//                    result[i] = result[j];
+//                    result[j] = temp;
+//                }
+//        for (int i = 0; i < result.Length; i++)
+//        {
+//            Console.WriteLine(result[i]);
+//        }
+//        return result;
+//    }
+//}
 
 
 // -------------------------------------------------------------------------------------------------
