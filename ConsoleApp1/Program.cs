@@ -24,7 +24,7 @@ class MainClass
         }
 
         Console.BackgroundColor = (ConsoleColor)deep;
-        Console.ForegroundColor = (ConsoleColor)deep1;
+        Console.ForegroundColor = (ConsoleColor)deep + 1;
         Console.WriteLine("..." + saidword);
 
         if (deep > 1)
@@ -33,8 +33,6 @@ class MainClass
         }
     }
 }
-
-
 
 // Рекурсия ****************************************************************************
 
@@ -63,7 +61,7 @@ class MainClass
 //        }
 
 //        Console.BackgroundColor = (ConsoleColor)deep;
-//        Console.ForegroundColor = (ConsoleColor)deep1;
+//        Console.ForegroundColor = (ConsoleColor)deep + 1;
 //        Console.WriteLine("..." + saidword);
 
 //        if (deep > 1)
