@@ -2,85 +2,36 @@
 
 class MainClass
 {
-    int array = 0;
     public static void Main(string[] args)
     {
-        int num = 0;
-        GetArrayFromConsole(ref num);
+        Console.WriteLine("Напишите что-то");
+        var str = Console.ReadLine();
+
+        Console.WriteLine("Укажите глубину эха");
+        var deep = int.Parse(Console.ReadLine());
+
+        Echo(str, deep);
+
+        Console.ReadKey();
     }
 
-    static int[] GetArrayFromConsole(ref int num)
+    static void Echo(string saidword, int deep)
     {
-        ChangeNum(ref num);
-        var result = new int[num];
-        int[] array = new int[num];
-
-        for (int i = 0; i < result.Length; i++)
+        var modif = saidword;
+        if (modif.Length > 2)
         {
-            Console.WriteLine("Введите элемент массива номер {0}", i + 1);
-            result[i] = int.Parse(Console.ReadLine());
-            array[i] = result[i];
+            modif = modif.Remove(0, 2);
         }
-        Console.WriteLine();
 
-        int[] sorteddecs;
-        int[] sortedacs;
-        SortArray(in array, out sorteddecs, out sortedacs);
+        Console.WriteLine("..." + saidword);
 
-        return result;
-    }
-
-    static int ChangeNum(ref int newnum)
-    {
-        Console.WriteLine("Введите количество элементов масива");
-        newnum = Convert.ToInt32(Console.ReadLine());
-
-        return newnum;
-    }
-
-    static void SortArray(in int[] array, out int[] sorteddecs, out int[] sortedacs)
-    {
-        sortedacs = SortArrayAsc(array);
-        Console.WriteLine();
-        sorteddecs = SortArrayDecs(array);
-    }
-
-    static int[] SortArrayAsc(int[] result)
-    {
-        int temp = 0;
-        for (int i = 0; i < result.Length; i++)
-            for (int j = i + 1; j < result.Length; j++)
-                if (result[i] > result[j])
-                {
-                    temp = result[i];
-                    result[i] = result[j];
-                    result[j] = temp;
-                }
-        for (int i = 0; i < result.Length; i++)
+        if (deep > 1)
         {
-            Console.WriteLine(result[i]);
+            Echo(modif, deep - 1);
         }
-        return result;
-    }
-
-    static int[] SortArrayDecs(int[] result)
-    {
-        int temp = 0;
-        for (int i = 0; i < result.Length; i++)
-            for (int j = i + 1; j < result.Length; j++)
-                if (result[i] < result[j])
-                {
-                    temp = result[i];
-                    result[i] = result[j];
-                    result[j] = temp;
-                }
-        for (int i = 0; i < result.Length; i++)
-        {
-            Console.WriteLine(result[i]);
-        }
-        return result;
     }
 }
+
 
 
 
