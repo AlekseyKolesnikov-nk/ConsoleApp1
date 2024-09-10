@@ -1,43 +1,163 @@
 ﻿using System;
 
+// 5.6 Итоговый проект ---------------------------------------------
 class MainClass
 {
     public static void Main(string[] args)
     {
-
-        Console.WriteLine("Укажите число");
-        var N = int.Parse(Console.ReadLine());
-        Console.WriteLine("Укажите степень");
-        byte pow = byte.Parse(Console.ReadLine());
-
-        //Результат 2 в 3 степени
-        Console.WriteLine(PowerUp(N, pow));
+        Console.WriteLine("ИТОГОВЫЙ ПРОЕКТ МОДУЛЯ 5\n");
+        var User = RecordAnketa();
+        ShowAnketa(User.Item1, User.Item2, User.Item3, User.Item4, User.Item5, User.Item6, User.Item7, User.Item8);
     }
 
-    public static int PowerUp(int N, byte pow)
+    static void ShowAnketa(string Name, string Name2, int Age, bool Pet, int NumPet, string[] NamePets, int NumFavColors, string[] FavColors)
     {
-        if (pow == 0)
+        //var User = RecordAnketa();
+        Console.WriteLine();
+
+        // Вывод личных данных *************************************************
+        Console.WriteLine("********** Информация о Вас **********: \n");
+
+        Console.WriteLine("Ваше имя и фамилия - {0} {1},", Name, Name2);
+        //Console.WriteLine("Ваша фамилия - {0}", Name2);
+        Console.WriteLine("Вам {0} лет \n", Age);
+
+        // Вывод информации о питомцах *****************************************
+        if (Pet == true)
         {
-            return 1;
+            Console.WriteLine("У Вас есть {0} питомца:", NumPet);
         }
         else
         {
-            if (pow == 1)
+            Console.WriteLine("У Вас нет питомцев");
+        }
+        for (int i = 0; i < NumPet; i++)
+        {
+            Console.WriteLine("Кличка {0}-го питомца - {1}", i + 1, NamePets[i]);
+        }
+
+        // Вывод информации о цветах *******************************************
+        Console.WriteLine("\nУ Вас {0} любимых цвета:", NumFavColors);
+        for (int i = 0; i < NumFavColors; i++)
+        {
+            Console.WriteLine("Ваш {0}-й любимый цвет - {1}", i + 1, FavColors[i]);
+        }
+
+        Console.ReadKey();
+    }
+
+    static (string, string, int, bool, int, string[], int, string[]) RecordAnketa()
+    {
+        int check = 0; //int i = 0;
+        (string Name, string Name2, int Age, bool Pet, int NumPet, string[] NamePets, int NumFavColors, string[] FavColors) Anketa = ("", "", 0, false, 0, null, 0, null);
+
+        // Ввод личных данных *************************************************************
+        Console.WriteLine("Введите Ваше имя:");
+        Anketa.Name = Console.ReadLine();
+
+        Console.WriteLine("Введите Вашу фамилию:");
+        Anketa.Name2 = Console.ReadLine();
+
+        Console.Write("Введите цифрами Ваш возраст: ");
+        check = Convert.ToInt32(Console.ReadLine());
+        CheckNum(ref check); // Вызов метода проверки корректности ввода
+        Anketa.Age = check;
+        string Txt;
+
+        // Ввод данных о питомцах **********************************************************
+        Console.WriteLine("Есть ли у Вас питомцы? (Да/Нет)");
+        var res = Console.ReadLine();
+        if (res == "Да" | res == "да" | res == "ДА")
+        {
+            Anketa.Pet = true;
+            Console.WriteLine("Введите цифрами количество питомцев:");
+            check = Convert.ToInt32(Console.ReadLine());
+            CheckNum(ref check); // Вызов метода проверки корректности ввода
+            Anketa.NumPet = check;
+
+            Txt = "Введите кличку Вашего питомца ";
+            Anketa.NamePets = GetFromConsole(check, Txt);// Вызов метода ввода имен питомцев и цветов
+        }
+
+        // Ввод данных о цветах ************************************************************
+        Console.WriteLine("Введите цифрами количество любимых цветов:");
+        check = Convert.ToInt32(Console.ReadLine());
+        CheckNum(ref check); // Вызов метода проверки корректности ввода
+        Anketa.NumFavColors = check;
+
+        Txt = "Введите Ваш любимый цвет ";
+        Anketa.FavColors = GetFromConsole(check, Txt); // Вызов метода ввода имен питомцев и цветов
+
+        return (Anketa);
+    }
+
+    static int CheckNum(ref int check) //Метод - проверка корректности ввода числовых значений (возраст, количество питомцев и цветов)
+    {
+        for (int i = 0; ; i++)
+        {
+            if (check > 0)
             {
-                return N;
+                return check;
             }
             else
             {
-                return N * PowerUp(N, --pow);
+                Console.WriteLine("Данные введены некорректно (число должно быть положительным). Повторите ввод");
+                check = Convert.ToInt32(Console.ReadLine());
             }
         }
     }
+
+    static string[] GetFromConsole(int check, string Txt) // Метод - ввод имен питомцев и цветов
+    {
+        var result = new string[check];
+        for (int i = 0; i < result.Length; i++)
+        {
+            Console.WriteLine(Txt + "{0}:", i + 1);
+            result[i] = Console.ReadLine();
+        }
+        return result;
+    }
 }
+
+
+
 
 // Рекурсия ****************************************************************************
 // 5.5.8 Рекурсия возведение числа в степень
 
+//class MainClass
+//{
+//    public static void Main(string[] args)
+//    {
 
+//        Console.WriteLine("Укажите число");
+//        var N = int.Parse(Console.ReadLine());
+//        Console.WriteLine("Укажите степень");
+//        byte pow = byte.Parse(Console.ReadLine());
+
+//        //Результат 2 в 3 степени
+//        Console.WriteLine(PowerUp(N, pow));
+//    }
+
+//    public static int PowerUp(int N, byte pow)
+//    {
+//        if (pow == 0)
+//        {
+//            return 1;
+//        }
+//        else
+//        {
+//            if (pow == 1)
+//            {
+//                return N;
+//            }
+//            else
+//            {
+//                return N * PowerUp(N, --pow);
+//            }
+//        }
+//    }
+//}
 
 // 5.5.5-5.5.7 Рекурсия с факториалом --------------------------------------------------
 //class MainClass
@@ -266,7 +386,7 @@ class MainClass
 //	}
 //}
 
-// 5.3.2. Передача перемнной по ссылке -----------------------------------------------------------------
+// 5.3.2. Передача переменной по ссылке -----------------------------------------------------------------
 //namespace FirstApp
 //{
 //    class Program
@@ -402,7 +522,7 @@ class MainClass
 //}
 
 // -----------------------------------------------------------------------------------
-// 5.1.6 Ввод массива с клавиатуры + сортировка по возрастанию, выод на экран --------
+// 5.1.6 Ввод массива с клавиатуры + сортировка по возрастанию, вывод на экран -------
 //    GetArrayFromConsole();
 //}
 //static int[] GetArrayFromConsole()
